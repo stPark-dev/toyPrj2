@@ -3,23 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev -p 23000 --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 23000",
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.7.4",
     "@auth/supabase-adapter": "^1.7.4",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@prisma/client": "^6.2.1",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.3",
     "next": "15.1.5",
     "next-auth": "^5.0.0-beta.25",
     "notistack": "^3.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-kakao-maps-sdk": "^1.1.27",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -34,6 +38,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "notistack": "^3.0.1",
     "postcss": "^8",
+    "prisma": "^6.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
