@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --navbar-height: 64px;
+    --drawer-width: 250px;
+    --primary-color: #1FABEB;
+    --secondary-color: #333;
+    --background-color: #fff;
+    --text-color: #333;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  
+  /* Navbar 스타일 */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    background-color: var(--background-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+  }
+  
+  /* Drawer 스타일 */
+  .drawer {
+    position: fixed;
+    top: var(--navbar-height);
+    left: -var(--drawer-width);
+    width: var(--drawer-width);
+    height: calc(100vh - var(--navbar-height));
+    background-color: var(--background-color);
+    transition: left 0.3s ease-in-out;
+    z-index: 999;
+  }
+  
+  .drawer.open {
+    left: 0;
+  }
+  
+  /* 반응형 스타일 */
+  @media (max-width: 768px) {
+    .navbar-links {
+      display: none;
+    }
+  
+    .drawer-toggle {
+      display: block;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .drawer-toggle {
+      display: none;
+    }
+  }
+  
+  /* 유틸리티 클래스 */
+  .hidden {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+  }
+  
