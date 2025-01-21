@@ -15,25 +15,26 @@
     "@emotion/styled": "^11.14.0",
     "@supabase/ssr": "^0.5.2",
     "@supabase/supabase-js": "^2.47.3",
+    "next": "15.1.5",
+    "next-auth": "^5.0.0-beta.25",
     "notistack": "^3.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "notistack": "^3.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.19",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "@eslint/eslintrc": "^3"
+    "notistack": "^3.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
