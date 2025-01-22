@@ -25,12 +25,20 @@ export default function Home() {
               />
             )}
             <p>안녕하세요, {session.user.name || "사용자"}님!</p>
-            <button onClick={() => signOut()}>로그아웃</button>
+            <button className="btn btn-primary" onClick={() => signOut()}>
+              로그아웃
+            </button>
           </div>
         ) : (
           <LoginButtons />
         )}
-        {session ? <button onClick={() => router.push("/map")}>지도로!</button> : <></>}
+        {session ? (
+          <button className="btn btn-primary" onClick={() => router.push("/map")}>
+            지도로!
+          </button>
+        ) : (
+          <></>
+        )}
       </main>
     </div>
   );

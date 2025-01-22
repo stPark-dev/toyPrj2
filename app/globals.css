@@ -1,88 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-    --navbar-height: 64px;
-    --drawer-width: 250px;
-    --primary-color: #1FABEB;
-    --secondary-color: #333;
-    --background-color: #fff;
-    --text-color: #333;
-  }
   
+  @layer base {
+  :root {
+        --gradient: linear-gradient(to top left,#96fbc4,#f9f586);
+        --background: 157 60.45% 6.32%;
+        --foreground: 157 9.3% 98.95%;
+        --card: 157 46.4% 10.27%;
+        --card-foreground: 157 9.3% 98.95%;
+        --popover: 157 46.4% 10.27%;
+        --popover-foreground: 157 9.3% 98.95%;
+        --primary: 157 93% 79%;
+        --primary-foreground: 157 9.3% 7.9%;
+        --secondary: 157 32.55% 18.96%;
+        --secondary-foreground: 157 9.3% 98.95%;
+        --muted: 157 46.5% 23.7%;
+        --muted-foreground: 157 9.3% 57.9%;
+        --accent: 157 32.55% 18.96%;
+        --accent-foreground: 157 9.3% 98.95%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 157 9.3% 98.95%;
+        --border: 157 32.55% 18.96%;
+        --input: 157 32.55% 18.96%;
+        --ring: 157 93% 79%;
+        --chart-1: 180 70% 50%;
+        --chart-2: 160 65% 45%;
+        --chart-3: 140 60% 40%;
+        --chart-4: 120 55% 45%;
+        --chart-5: 100 50% 50%;
+        --radius: 0.5rem;
+    }
+  .dark {
+        --background: 0 0% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 0 0% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --popover: 0 0% 3.9%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 0 0% 9%;
+        --secondary: 0 0% 14.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 0 0% 14.9%;
+        --muted-foreground: 0 0% 63.9%;
+        --accent: 0 0% 14.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 0 0% 14.9%;
+        --input: 0 0% 14.9%;
+        --ring: 0 0% 83.1%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+}
+  
+  @layer base {
   * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
+    @apply border-border;
+    }
   body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-  }
-  
-  /* Navbar 스타일 */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--navbar-height);
-    background-color: var(--background-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-  
-  .navbar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 0 20px;
-  }
-  
-  /* Drawer 스타일 */
-  .drawer {
-    position: fixed;
-    top: var(--navbar-height);
-    left: -var(--drawer-width);
-    width: var(--drawer-width);
-    height: calc(100vh - var(--navbar-height));
-    background-color: var(--background-color);
-    transition: left 0.3s ease-in-out;
-    z-index: 999;
-  }
-  
-  .drawer.open {
-    left: 0;
-  }
-  
-  /* 반응형 스타일 */
-  @media (max-width: 768px) {
-    .navbar-links {
-      display: none;
+    @apply bg-background text-foreground;
     }
-  
-    .drawer-toggle {
-      display: block;
-    }
-  }
-  
-  @media (min-width: 769px) {
-    .drawer-toggle {
-      display: none;
-    }
-  }
-  
-  /* 유틸리티 클래스 */
-  .hidden {
-    display: none;
-  }
-  
-  .visible {
-    display: block;
-  }
+}
   
