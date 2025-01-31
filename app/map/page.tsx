@@ -1,6 +1,6 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 
@@ -22,6 +22,7 @@ export default function BasicMap() {
   useKakaoLoader();
   const [nightViews, setNightViews] = useState<NightView[]>([]);
   const [selectedMarker, setSelectedMarker] = useState<number | null>(null);
+  const [hoveredMarker, setHoveredMarker] = useState<number | null>(null);
   const [level, setLevel] = useState(8);
   const supabase = createClient();
 
@@ -51,7 +52,6 @@ export default function BasicMap() {
       <Map
         id="map"
         center={{
-          // 서울 시청 좌표
           lat: 37.5665,
           lng: 126.978,
         }}
@@ -63,11 +63,23 @@ export default function BasicMap() {
       >
         {nightViews.map((view) => (
           <div key={view.num}>
+            {hoveredMarker === view.num && (
+              <CustomOverlayMap
+                position={{ lat: view.la, lng: view.lo }}
+                yAnchor={1.8}
+                zIndex={998}
+              >
+                <div className="bg-white px-2 py-1 rounded shadow text-sm text-black border border-gray-200">
+                  {view.title}
+                </div>
+              </CustomOverlayMap>
+            )}
             <MapMarker
               position={{ lat: view.la, lng: view.lo }}
-              onMouseOver={() => setSelectedMarker(view.num)}
-              onMouseOut={() => setSelectedMarker(null)}
               zIndex={1}
+              onMouseOver={() => setHoveredMarker(view.num)}
+              onMouseOut={() => setHoveredMarker(null)}
+              onClick={() => setSelectedMarker(view.num)}
             />
             {selectedMarker === view.num && (
               <CustomOverlayMap
@@ -75,7 +87,13 @@ export default function BasicMap() {
                 yAnchor={1.5}
                 zIndex={999}
               >
-                <div className="bg-white p-4 rounded-lg shadow-lg max-w-sm relative overflow-auto z-[1000]">
+                <div className="bg-white p-4 rounded-lg shadow-lg max-w-sm relative max-h-[80vh] overflow-auto">
+                  <button
+                    onClick={() => setSelectedMarker(null)}
+                    className="absolute top-2 right-2 p-1 hover:bg-gray-100 rounded-full"
+                  >
+                    <X className="h-4 w-4 text-gray-700" />
+                  </button>
                   <h3 className="font-bold text-lg mb-2 text-black">{view.title}</h3>
                   <p className="text-sm text-gray-600 mb-2">{view.addr}</p>
                   <p className="text-sm text-gray-600 mb-2">운영시간: {view.operating_time}</p>
